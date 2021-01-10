@@ -79,6 +79,7 @@ const SignupForm = () => {
           />
           <Form.Control.Feedback type='invalid'>Username is required!</Form.Control.Feedback>
         </Form.Group>
+        
 
         <Form.Group>
           <Form.Label htmlFor='email'>Email</Form.Label>
@@ -92,6 +93,7 @@ const SignupForm = () => {
           />
           <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
         </Form.Group>
+        
 
         <Form.Group>
           <Form.Label htmlFor='password'>Password</Form.Label>
@@ -112,6 +114,7 @@ const SignupForm = () => {
           Submit
         </Button>
       </Form>
+      {err && <div>Signup failed</div>}
     </>
   );
 };
