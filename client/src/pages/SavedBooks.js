@@ -8,12 +8,12 @@ import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
 
 const SavedBooks = () => {
-  const [removeBook] = useMutation(REMOVE_BOOK);
+  //const [userData, setUserData] = useState({});
   const { loading, data } = useQuery(QUERY_ME);
+  const [ removeBook ] = useMutation(REMOVE_BOOK);
 
   const userData = data?.me || {};
-
-  console.log(data)
+  
   // create function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleDeleteBook = async (bookId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -24,16 +24,18 @@ const SavedBooks = () => {
 
     try {
       await removeBook({
-        variables: {bookId: bookId }
+        variables: { bookId: bookId }
       })
+      // upon success, remove book's id from localStorage
       removeBookId(bookId);
     } catch (err) {
       console.error(err);
     }
   };
 
-  if(loading) {
-    return <h3>Please wait...</h3>
+  // if data isn't here yet, say so
+  if (loading) {
+    return <h2>Please Wait! </h2>;
   }
 
   return (
@@ -47,8 +49,7 @@ const SavedBooks = () => {
         <h2>
           {userData.savedBooks.length
             ? `Viewing ${userData.savedBooks.length} saved ${userData.savedBooks.length === 1 ? 'book' : 'books'}:`
-            : 'You have no saved books! Start searching!'
-          }
+            : 'You have no saved books!'}
         </h2>
         <CardColumns>
           {userData.savedBooks.map((book) => {
