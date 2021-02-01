@@ -29,7 +29,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This is a MERN stack application that allows you to search for any book by using the google books api The application allows for searching books with out logging in, however, if you wish to create a reading list and save the books, this application allows for users to sign up and save books to their profile.
+This is a MERN stack application that allows you to search for any book by using the google books api. The application allows for searching books with out logging in, however, if you wish to create a reading list and save the books, this application allows for users to sign up and save books to their profile.
 
 Once signed up you may save books from your list and also you may delete books from your profile. 
 
